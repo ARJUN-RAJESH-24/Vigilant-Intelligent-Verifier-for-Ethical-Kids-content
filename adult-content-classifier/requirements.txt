@@ -1,0 +1,9 @@
+numpy
+pandas
+opencv-python
+scikit-learn
+xgboost
+librosa
+nltk
+matplotlib
+tqdm
