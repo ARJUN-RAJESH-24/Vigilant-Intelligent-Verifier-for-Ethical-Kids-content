@@ -1,28 +1,54 @@
-import pandas as pd, numpy as np
-from sklearn.model_selection import StratifiedKFold, cross_validate
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
-from sklearn.svm import SVC
+from sklearn.naive_bayes import GaussianNB
 from sklearn.ensemble import RandomForestClassifier
-import xgboost as xgb
+from sklearn.svm import SVC
+from sklearn.metrics import classification_report, confusion_matrix
+import joblib
+import os
 
-video = pd.read_csv('features/video_features.csv')
-text = pd.read_csv('features/text_features.csv')
-labels = pd.read_csv('data/labels.csv')
-df = video.merge(text, on='id').merge(labels, on='id')
-X = df.drop(['id','label'], axis=1)
-y = df['label']
+def main():
+    # Load features
+    text = pd.read_csv("features/text_features.csv")
+    audio = pd.read_csv("features/audio_features.csv")
+    video = pd.read_csv("features/video_features.csv")
+    labels = pd.read_csv("data/labels.csv")
 
-models = {
-    'LogReg': LogisticRegression(max_iter=2000, class_weight='balanced'),
-    'SVM': SVC(probability=True, class_weight='balanced'),
-    'RF': RandomForestClassifier(class_weight='balanced', n_estimators=200),
-    'XGB': xgb.XGBClassifier(scale_pos_weight=y.value_counts()[0]/y.value_counts()[1])
-}
+    df = text.merge(audio, on="id", how="left").merge(video, on="id", how="left").merge(labels, on="id", how="left")
+    df = df.fillna(0)
 
-scoring = ['precision','recall','f1','roc_auc']
-cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
-for name, model in models.items():
-    res = cross_validate(model, X, y, cv=cv, scoring=scoring)
-    print(f"\\n{name}")
-    for s in scoring:
-        print(f"{s}: {res['test_'+s].mean():.3f}")
+    X = df.drop(columns=["id", "label"])
+    y = df["label"]
+
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    scaler = StandardScaler()
+    X_train = scaler.fit_transform(X_train)
+    X_test = scaler.transform(X_test)
+
+    models = {
+        "LogisticRegression": LogisticRegression(max_iter=200),
+        "SVM": SVC(kernel="linear", probability=True),
+        "RandomForest": RandomForestClassifier(n_estimators=100),
+        "NaiveBayes": GaussianNB()
+    }
+
+    os.makedirs("models/trained_models", exist_ok=True)
+    os.makedirs("models/results", exist_ok=True)
+
+    for name, model in models.items():
+        model.fit(X_train, y_train)
+        y_pred = model.predict(X_test)
+        report = classification_report(y_test, y_pred, output_dict=True)
+        print(f"\n✅ {name} Results:")
+        print(classification_report(y_test, y_pred))
+
+        # Save model
+        joblib.dump(model, f"models/trained_models/{name}.pkl")
+
+        # Save report
+        pd.DataFrame(report).transpose().to_csv(f"models/results/{name}_report.csv", index=True)
+
+if __name__ == "__main__":
+    main()

@@ -1,9 +1,10 @@
-numpy
 pandas
-opencv-python
+numpy
 scikit-learn
-xgboost
-librosa
-nltk
 matplotlib
 tqdm
+joblib
+xgboost
+kagglehub
+librosa
+opencv-python
