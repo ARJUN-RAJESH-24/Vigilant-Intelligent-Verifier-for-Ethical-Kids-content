@@ -8,3 +8,4 @@ xgboost
 kagglehub
 librosa
 opencv-python
+seaborn
