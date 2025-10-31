@@ -1,0 +1,9 @@
+Model,Accuracy,Precision,Recall,F1-Score,CV_F1_Mean,CV_F1_Std,ROC-AUC,Best_Params
+LogisticRegression,1.0,1.0,1.0,1.0,0.9333333333333332,0.13333333333333336,1.0,"{'C': 0.1, 'penalty': 'l2', 'solver': 'liblinear'}"
+SVM,1.0,1.0,1.0,1.0,0.8666666666666666,0.16329931618554522,1.0,"{'C': 10.0, 'gamma': 'scale', 'kernel': 'rbf'}"
+RandomForest,1.0,1.0,1.0,1.0,1.0,0.0,1.0,"{'max_depth': 10, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 100}"
+GradientBoosting,1.0,1.0,1.0,1.0,0.9333333333333332,0.13333333333333336,1.0,"{'learning_rate': 0.01, 'max_depth': 3, 'min_samples_split': 2, 'n_estimators': 100}"
+NaiveBayes,1.0,1.0,1.0,1.0,0.8933333333333333,0.13727506854649335,1.0,{'var_smoothing': 1e-09}
+KNN,1.0,1.0,1.0,1.0,0.8666666666666666,0.16329931618554522,1.0,"{'metric': 'euclidean', 'n_neighbors': 5, 'weights': 'uniform'}"
+DecisionTree,1.0,1.0,1.0,1.0,0.8666666666666666,0.16329931618554522,1.0,"{'max_depth': 10, 'min_samples_leaf': 1, 'min_samples_split': 2}"
+Ensemble,1.0,1.0,1.0,1.0,,,1.0,Voting(RF+GB+SVM)
