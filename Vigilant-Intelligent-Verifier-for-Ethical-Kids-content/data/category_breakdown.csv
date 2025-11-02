@@ -1,0 +1,7 @@
+category,label,count
+adult,1,30
+hate_speech,1,30
+safe,0,150
+sexism,1,30
+toxicity,1,30
+violence,1,30

@@ -1,0 +1,51 @@
+{
+  "total_tests": 37,
+  "passed": 36,
+  "failed": 0,
+  "warnings": 1,
+  "passed_tests": [
+    "pandas",
+    "numpy",
+    "scikit-learn",
+    "librosa (audio)",
+    "opencv-python (video)",
+    "textblob (NLP)",
+    "joblib",
+    "matplotlib",
+    "seaborn",
+    "Directory: data",
+    "Directory: data/videos",
+    "Directory: features",
+    "Directory: models",
+    "Directory: models/trained_models",
+    "Directory: models/results",
+    "Directory: scripts",
+    "Directory: notebooks",
+    "Script: scripts/extract_text_features.py",
+    "Script: scripts/extract_audio_features.py",
+    "Script: scripts/extract_video_features.py",
+    "Script: scripts/train_models.py",
+    "Text cleaning",
+    "Text feature extraction",
+    "  Extracted 12 features",
+    "Create sample captions",
+    "Create sample labels",
+    "Text features extracted: 4 samples",
+    "Feature scaling",
+    "Model training (RandomForest)",
+    "Model training (LogisticRegression)",
+    "Model saving",
+    "Model loading",
+    "Single prediction",
+    "Probability prediction",
+    "Empty text handling",
+    "None text handling"
+  ],
+  "failed_tests": [],
+  "warning_tests": [
+    {
+      "name": "Audio/Video feature extraction",
+      "message": "No videos found - add videos to data/videos/ for full testing"
+    }
+  ]
+}

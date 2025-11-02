@@ -1,0 +1,301 @@
+id,caption,label,category,source
+sample_00000,Those [COMMUNITY] people are all stupid,1,hate_speech,synthetic
+sample_00001,Brutal fight scene with knife,1,violence,synthetic
+sample_00002,Intimate bedroom scene with soft music,1,adult,synthetic
+sample_00003,Fitness workout routine for endurance,0,safe,synthetic
+sample_00004,Women belong in the home not in office,1,sexism,synthetic
+sample_00005,Women belong in the kitchen not in office,1,sexism,synthetic
+sample_00006,I hate [GROUP] they ruin everything,1,hate_speech,synthetic
+sample_00007,Music lesson: Learning guitar,0,safe,synthetic
+sample_00008,Cute rabbits playing in the garden,0,safe,synthetic
+sample_00009,Lingerie fashion show runway models,1,adult,synthetic
+sample_00010,Girls can't lead as well as boys,1,sexism,synthetic
+sample_00011,Tech review: laptop unboxing and setup,0,safe,synthetic
+sample_00012,Women belong in the home not in leadership,1,sexism,synthetic
+sample_00013,Educational video about geography for students,0,safe,synthetic
+sample_00014,Typical [GROUP] behavior always cause trouble,1,hate_speech,synthetic
+sample_00015,She's too pretty to be programmer,1,sexism,synthetic
+sample_00016,You're such a failure I can't believe you said that,1,toxicity,synthetic
+sample_00017,A woman's place is supporting husband,1,sexism,synthetic
+sample_00018,DIY home improvement project: organizing closet,0,safe,synthetic
+sample_00019,XXX adult content explicit warning,1,adult,synthetic
+sample_00020,Family vacation at beach with beautiful scenery,0,safe,synthetic
+sample_00021,Language learning: Japanese basics,0,safe,synthetic
+sample_00022,Assault and battery incident bar,1,violence,synthetic
+sample_00023,Murder scene investigation forensics,1,violence,synthetic
+sample_00024,Historical documentary about ancient Rome,0,safe,synthetic
+sample_00025,Historical documentary about medieval times,0,safe,synthetic
+sample_00026,Stupid idiot doesn't know what they're talking about,1,toxicity,synthetic
+sample_00027,Go delete yourself you piece of waste,1,toxicity,synthetic
+sample_00028,After dark: content,1,adult,synthetic
+sample_00029,She's too pretty to be CEO,1,sexism,synthetic
+sample_00030,Professional photography tutorial step by step,0,safe,synthetic
+sample_00031,Intimate bedroom scene with candles,1,adult,synthetic
+sample_00032,Tech review: tablet unboxing and setup,0,safe,synthetic
+sample_00033,Tech review: camera unboxing and setup,0,safe,synthetic
+sample_00034,A woman's place is raising children,1,sexism,synthetic
+sample_00035,Professional drawing tutorial step by step,0,safe,synthetic
+sample_00036,Art tutorial: How to draw landscapes,0,safe,synthetic
+sample_00037,Science experiment: physics explained,0,safe,synthetic
+sample_00038,Tech review: tablet unboxing and setup,0,safe,synthetic
+sample_00039,Music lesson: Learning drums,0,safe,synthetic
+sample_00040,DIY home improvement project: painting walls,0,safe,synthetic
+sample_00041,Nature documentary about oceans,0,safe,synthetic
+sample_00042,You're a waste of junk honestly,1,toxicity,synthetic
+sample_00043,Book review: classics analysis,0,safe,synthetic
+sample_00044,DIY home improvement project: organizing closet,0,safe,synthetic
+sample_00045,Gardening tips for growing flowers,0,safe,synthetic
+sample_00046,A woman's place is at home,1,sexism,synthetic
+sample_00047,She's too pretty to be scientist,1,sexism,synthetic
+sample_00048,Travel vlog exploring cities,0,safe,synthetic
+sample_00049,Women belong in the home not in workplace,1,sexism,synthetic
+sample_00050,Those [PEOPLE] people are all criminal,1,hate_speech,synthetic
+sample_00051,Family vacation at lake with beautiful scenery,0,safe,synthetic
+sample_00052,Real men don't be vulnerable,1,sexism,synthetic
+sample_00053,Family vacation at lake with beautiful scenery,0,safe,synthetic
+sample_00054,Kill yourself you failure,1,toxicity,synthetic
+sample_00055,What a failure comment from a failure person,1,toxicity,synthetic
+sample_00056,Book review: non-fiction analysis,0,safe,synthetic
+sample_00057,Tech review: camera unboxing and setup,0,safe,synthetic
+sample_00058,Those [PEOPLE] people are all stupid,1,hate_speech,synthetic
+sample_00059,Science experiment: chemistry explained,0,safe,synthetic
+sample_00060,Typical woman driver can't navigate,1,sexism,synthetic
+sample_00061,Professional cooking tutorial step by step,0,safe,synthetic
+sample_00062,Gardening tips for growing flowers,0,safe,synthetic
+sample_00063,Why do [COMMUNITY] always cause trouble,1,hate_speech,synthetic
+sample_00064,Romantic couples intimate moments,1,adult,synthetic
+sample_00065,Cooking tutorial: How to make delicious salad,0,safe,synthetic
+sample_00066,Family vacation at lake with beautiful scenery,0,safe,synthetic
+sample_00067,Deadly weapon demonstration explosives,1,violence,synthetic
+sample_00068,DIY home improvement project: organizing closet,0,safe,synthetic
+sample_00069,I hate [GROUP] they ruin everything,1,hate_speech,synthetic
+sample_00070,Cooking tutorial: How to make delicious dessert,0,safe,synthetic
+sample_00071,Art tutorial: How to draw objects,0,safe,synthetic
+sample_00072,Women are too irrational for executive roles,1,sexism,synthetic
+sample_00073,Why do [COMMUNITY] always complain,1,hate_speech,synthetic
+sample_00074,Professional drawing tutorial step by step,0,safe,synthetic
+sample_00075,Go delete yourself you piece of trash,1,toxicity,synthetic
+sample_00076,Meditation and mindfulness guide,0,safe,synthetic
+sample_00077,Morning yoga routine for beginners,0,safe,synthetic
+sample_00078,Fitness workout routine for endurance,0,safe,synthetic
+sample_00079,Go delete yourself you piece of junk,1,toxicity,synthetic
+sample_00080,Sexy model photoshoot behind the scenes,1,adult,synthetic
+sample_00081,Sensual massage therapy video,1,adult,synthetic
+sample_00082,Nature documentary about wildlife,0,safe,synthetic
+sample_00083,Cute birds playing in the garden,0,safe,synthetic
+sample_00084,Historical documentary about Renaissance,0,safe,synthetic
+sample_00085,Fitness workout routine for weight loss,0,safe,synthetic
+sample_00086,Family vacation at mountains with beautiful scenery,0,safe,synthetic
+sample_00087,Book review: fiction analysis,0,safe,synthetic
+sample_00088,Educational video about history for students,0,safe,synthetic
+sample_00089,Healthy meal prep for the week,0,safe,synthetic
+sample_00090,Typical [COMMUNITY] behavior always lie,1,hate_speech,synthetic
+sample_00091,Travel vlog exploring museums,0,safe,synthetic
+sample_00092,Historical documentary about ancient Rome,0,safe,synthetic
+sample_00093,Women belong in the home not in office,1,sexism,synthetic
+sample_00094,Fitness workout routine for endurance,0,safe,synthetic
+sample_00095,Cute puppies playing in the garden,0,safe,synthetic
+sample_00096,Sensual massage therapy video,1,adult,synthetic
+sample_00097,DIY home improvement project: fixing furniture,0,safe,synthetic
+sample_00098,What a moron comment from a moron person,1,toxicity,synthetic
+sample_00099,Fitness workout routine for weight loss,0,safe,synthetic
+sample_00100,Women are too irrational for management,1,sexism,synthetic
+sample_00101,Meditation and mindfulness guide,0,safe,synthetic
+sample_00102,Fitness workout routine for strength,0,safe,synthetic
+sample_00103,Why do [PEOPLE] always lie,1,hate_speech,synthetic
+sample_00104,War crimes footage graphic content,1,violence,synthetic
+sample_00105,Typical woman driver can't park,1,sexism,synthetic
+sample_00106,Healthy meal prep for the week,0,safe,synthetic
+sample_00107,Gardening tips for growing tomatoes,0,safe,synthetic
+sample_00108,Send [PEOPLE] back to where they came from,1,hate_speech,synthetic
+sample_00109,Professional cooking tutorial step by step,0,safe,synthetic
+sample_00110,Historical documentary about Renaissance,0,safe,synthetic
+sample_00111,War crimes footage graphic content,1,violence,synthetic
+sample_00112,DIY home improvement project: organizing closet,0,safe,synthetic
+sample_00113,Gore and blood in movie,1,violence,synthetic
+sample_00114,Deadly weapon demonstration explosives,1,violence,synthetic
+sample_00115,Gardening tips for growing herbs,0,safe,synthetic
+sample_00116,Educational video about math for students,0,safe,synthetic
+sample_00117,Pathetic failure get a life,1,toxicity,synthetic
+sample_00118,Why do [PEOPLE] always steal,1,hate_speech,synthetic
+sample_00119,Why do [COMMUNITY] always steal,1,hate_speech,synthetic
+sample_00120,Travel vlog exploring museums,0,safe,synthetic
+sample_00121,Lingerie fashion show runway models,1,adult,synthetic
+sample_00122,Sick of [COMMUNITY] taking over our country,1,hate_speech,synthetic
+sample_00123,XXX adult content explicit warning,1,adult,synthetic
+sample_00124,Family vacation at mountains with beautiful scenery,0,safe,synthetic
+sample_00125,Violent attack caught on camera alley,1,violence,synthetic
+sample_00126,Family vacation at lake with beautiful scenery,0,safe,synthetic
+sample_00127,Educational video about biology for students,0,safe,synthetic
+sample_00128,Those [GROUP] people are all stupid,1,hate_speech,synthetic
+sample_00129,Shut up you failure nobody cares,1,toxicity,synthetic
+sample_00130,Travel vlog exploring museums,0,safe,synthetic
+sample_00131,Family vacation at mountains with beautiful scenery,0,safe,synthetic
+sample_00132,Hot music performance at nightclub,1,adult,synthetic
+sample_00133,Gardening tips for growing tomatoes,0,safe,synthetic
+sample_00134,Shut up you failure nobody cares,1,toxicity,synthetic
+sample_00135,Everyone hates you you idiot,1,toxicity,synthetic
+sample_00136,Hot music performance at nightclub,1,adult,synthetic
+sample_00137,Sensual massage therapy video,1,adult,synthetic
+sample_00138,Strip club performance late night,1,adult,synthetic
+sample_00139,Healthy meal prep for the week,0,safe,synthetic
+sample_00140,Cooking tutorial: How to make delicious dessert,0,safe,synthetic
+sample_00141,Art tutorial: How to draw portraits,0,safe,synthetic
+sample_00142,Lingerie fashion show runway models,1,adult,synthetic
+sample_00143,Cooking tutorial: How to make delicious dessert,0,safe,synthetic
+sample_00144,Women should focus on children,1,sexism,synthetic
+sample_00145,Graphic violence warning: blood,1,violence,synthetic
+sample_00146,Professional cooking tutorial step by step,0,safe,synthetic
+sample_00147,Fitness workout routine for weight loss,0,safe,synthetic
+sample_00148,Travel vlog exploring villages,0,safe,synthetic
+sample_00149,Language learning: Spanish basics,0,safe,synthetic
+sample_00150,Assault and battery incident street,1,violence,synthetic
+sample_00151,Educational video about biology for students,0,safe,synthetic
+sample_00152,Real men don't show emotion,1,sexism,synthetic
+sample_00153,Sexy performer photoshoot behind the scenes,1,adult,synthetic
+sample_00154,Go block yourself you piece of trash,1,toxicity,synthetic
+sample_00155,War crimes footage graphic content,1,violence,synthetic
+sample_00156,She's too pretty to be programmer,1,sexism,synthetic
+sample_00157,Gardening tips for growing flowers,0,safe,synthetic
+sample_00158,Real residents wouldn't associate with [GROUP],1,hate_speech,synthetic
+sample_00159,Meditation and mindfulness guide,0,safe,synthetic
+sample_00160,She only got the job because she's related to boss,1,sexism,synthetic
+sample_00161,Intimate bedroom scene with candles,1,adult,synthetic
+sample_00162,Art tutorial: How to draw animals,0,safe,synthetic
+sample_00163,Language learning: French basics,0,safe,synthetic
+sample_00164,Science experiment: chemistry explained,0,safe,synthetic
+sample_00165,Fitness workout routine for strength,0,safe,synthetic
+sample_00166,Stupid waste doesn't know what they're talking about,1,toxicity,synthetic
+sample_00167,Brutal fight scene with knife,1,violence,synthetic
+sample_00168,Hot music performance at nightclub,1,adult,synthetic
+sample_00169,Morning yoga routine for beginners,0,safe,synthetic
+sample_00170,Music lesson: Learning violin,0,safe,synthetic
+sample_00171,All [GROUP] should go away,1,hate_speech,synthetic
+sample_00172,Graphic violence warning: graphic,1,violence,synthetic
+sample_00173,DIY home improvement project: fixing furniture,0,safe,synthetic
+sample_00174,Cute rabbits playing in the garden,0,safe,synthetic
+sample_00175,Murder scene investigation crime scene,1,violence,synthetic
+sample_00176,Family vacation at lake with beautiful scenery,0,safe,synthetic
+sample_00177,Healthy meal prep for the week,0,safe,synthetic
+sample_00178,Everyone hates you you loser,1,toxicity,synthetic
+sample_00179,Language learning: Japanese basics,0,safe,synthetic
+sample_00180,Those [GROUP] people are all inferior,1,hate_speech,synthetic
+sample_00181,Nature documentary about wildlife,0,safe,synthetic
+sample_00182,Brutal fight scene with bat,1,violence,synthetic
+sample_00183,Stupid waste doesn't know what they're talking about,1,toxicity,synthetic
+sample_00184,Travel vlog exploring landmarks,0,safe,synthetic
+sample_00185,Murder scene investigation forensics,1,violence,synthetic
+sample_00186,Deadly weapon demonstration guns,1,violence,synthetic
+sample_00187,Lingerie fashion show runway models,1,adult,synthetic
+sample_00188,Healthy meal prep for the week,0,safe,synthetic
+sample_00189,Book review: fiction analysis,0,safe,synthetic
+sample_00190,Fitness workout routine for weight loss,0,safe,synthetic
+sample_00191,Provocative dance video at party,1,adult,synthetic
+sample_00192,Real men don't cry,1,sexism,synthetic
+sample_00193,All [PEOPLE] should go away,1,hate_speech,synthetic
+sample_00194,Torture methods used in video,1,violence,synthetic
+sample_00195,Meditation and mindfulness guide,0,safe,synthetic
+sample_00196,What a failure comment from a failure person,1,toxicity,synthetic
+sample_00197,Graphic violence warning: graphic,1,violence,synthetic
+sample_00198,Nature documentary about deserts,0,safe,synthetic
+sample_00199,Real men don't show emotion,1,sexism,synthetic
+sample_00200,Professional drawing tutorial step by step,0,safe,synthetic
+sample_00201,Art tutorial: How to draw animals,0,safe,synthetic
+sample_00202,Book review: non-fiction analysis,0,safe,synthetic
+sample_00203,Send [PEOPLE] back to where they came from,1,hate_speech,synthetic
+sample_00204,XXX adult content explicit warning,1,adult,synthetic
+sample_00205,All [PEOPLE] should be deported,1,hate_speech,synthetic
+sample_00206,You're a waste of junk honestly,1,toxicity,synthetic
+sample_00207,Book review: classics analysis,0,safe,synthetic
+sample_00208,Cooking tutorial: How to make delicious dessert,0,safe,synthetic
+sample_00209,Morning stretching routine for beginners,0,safe,synthetic
+sample_00210,Travel vlog exploring landmarks,0,safe,synthetic
+sample_00211,You're such a moron I can't believe you said that,1,toxicity,synthetic
+sample_00212,Art tutorial: How to draw objects,0,safe,synthetic
+sample_00213,Music lesson: Learning guitar,0,safe,synthetic
+sample_00214,Murder scene investigation forensics,1,violence,synthetic
+sample_00215,Educational video about science for students,0,safe,synthetic
+sample_00216,Tech review: tablet unboxing and setup,0,safe,synthetic
+sample_00217,Shut up you moron nobody cares,1,toxicity,synthetic
+sample_00218,NSFW explicit adult content warning,1,adult,synthetic
+sample_00219,Morning exercise routine for beginners,0,safe,synthetic
+sample_00220,Family vacation at forest with beautiful scenery,0,safe,synthetic
+sample_00221,You're absolutely moron and everyone knows it,1,toxicity,synthetic
+sample_00222,She's too pretty to be engineer,1,sexism,synthetic
+sample_00223,Mature audience only: scenes,1,adult,synthetic
+sample_00224,Art tutorial: How to draw objects,0,safe,synthetic
+sample_00225,Assault and battery incident parking lot,1,violence,synthetic
+sample_00226,Travel vlog exploring landmarks,0,safe,synthetic
+sample_00227,Language learning: German basics,0,safe,synthetic
+sample_00228,Typical [GROUP] behavior always cause trouble,1,hate_speech,synthetic
+sample_00229,Real men don't be vulnerable,1,sexism,synthetic
+sample_00230,Tech review: smartphone unboxing and setup,0,safe,synthetic
+sample_00231,Gore and blood in video,1,violence,synthetic
+sample_00232,What a idiot comment from a idiot person,1,toxicity,synthetic
+sample_00233,Assault and battery incident parking lot,1,violence,synthetic
+sample_00234,Send [COMMUNITY] back to where they came from,1,hate_speech,synthetic
+sample_00235,Gardening tips for growing flowers,0,safe,synthetic
+sample_00236,Family vacation at mountains with beautiful scenery,0,safe,synthetic
+sample_00237,Nature documentary about forests,0,safe,synthetic
+sample_00238,Gore and blood in footage,1,violence,synthetic
+sample_00239,Women are too weak for executive roles,1,sexism,synthetic
+sample_00240,Pathetic failure get a life,1,toxicity,synthetic
+sample_00241,All [GROUP] should leave,1,hate_speech,synthetic
+sample_00242,Lingerie fashion show runway models,1,adult,synthetic
+sample_00243,Fitness workout routine for weight loss,0,safe,synthetic
+sample_00244,A woman's place is supporting husband,1,sexism,synthetic
+sample_00245,Family vacation at forest with beautiful scenery,0,safe,synthetic
+sample_00246,[GROUP] are destroying our neighborhood,1,hate_speech,synthetic
+sample_00247,Women should focus on family,1,sexism,synthetic
+sample_00248,War crimes footage graphic content,1,violence,synthetic
+sample_00249,Cooking tutorial: How to make delicious pasta,0,safe,synthetic
+sample_00250,Meditation and mindfulness guide,0,safe,synthetic
+sample_00251,Historical documentary about ancient Rome,0,safe,synthetic
+sample_00252,Gardening tips for growing flowers,0,safe,synthetic
+sample_00253,Family vacation at mountains with beautiful scenery,0,safe,synthetic
+sample_00254,Language learning: Spanish basics,0,safe,synthetic
+sample_00255,Tech review: camera unboxing and setup,0,safe,synthetic
+sample_00256,Meditation and mindfulness guide,0,safe,synthetic
+sample_00257,Nature documentary about wildlife,0,safe,synthetic
+sample_00258,Sick of [GROUP] taking over our country,1,hate_speech,synthetic
+sample_00259,Travel vlog exploring villages,0,safe,synthetic
+sample_00260,Language learning: Spanish basics,0,safe,synthetic
+sample_00261,Professional coding tutorial step by step,0,safe,synthetic
+sample_00262,Violent attack caught on camera street,1,violence,synthetic
+sample_00263,Fitness workout routine for weight loss,0,safe,synthetic
+sample_00264,Cute rabbits playing in the garden,0,safe,synthetic
+sample_00265,Romantic couples intimate moments,1,adult,synthetic
+sample_00266,You're absolutely moron and everyone knows it,1,toxicity,synthetic
+sample_00267,Book review: fiction analysis,0,safe,synthetic
+sample_00268,Pathetic loser get a life,1,toxicity,synthetic
+sample_00269,War crimes footage graphic content,1,violence,synthetic
+sample_00270,Tech review: tablet unboxing and setup,0,safe,synthetic
+sample_00271,Gardening tips for growing flowers,0,safe,synthetic
+sample_00272,Lingerie fashion show runway models,1,adult,synthetic
+sample_00273,Real residents wouldn't associate with [GROUP],1,hate_speech,synthetic
+sample_00274,What a waste comment from a waste person,1,toxicity,synthetic
+sample_00275,Typical [COMMUNITY] behavior always steal,1,hate_speech,synthetic
+sample_00276,Mature audience only: content,1,adult,synthetic
+sample_00277,Educational video about science for students,0,safe,synthetic
+sample_00278,Cooking tutorial: How to make delicious pasta,0,safe,synthetic
+sample_00279,Typical woman driver can't navigate,1,sexism,synthetic
+sample_00280,Brutal fight scene with gun,1,violence,synthetic
+sample_00281,Gardening tips for growing flowers,0,safe,synthetic
+sample_00282,Provocative dance video at venue,1,adult,synthetic
+sample_00283,You're absolutely loser and everyone knows it,1,toxicity,synthetic
+sample_00284,All [COMMUNITY] should be deported,1,hate_speech,synthetic
+sample_00285,Assault and battery incident parking lot,1,violence,synthetic
+sample_00286,Art tutorial: How to draw landscapes,0,safe,synthetic
+sample_00287,Cooking tutorial: How to make delicious soup,0,safe,synthetic
+sample_00288,Sexy artist photoshoot behind the scenes,1,adult,synthetic
+sample_00289,Healthy meal prep for the week,0,safe,synthetic
+sample_00290,Language learning: Japanese basics,0,safe,synthetic
+sample_00291,Real men don't show emotion,1,sexism,synthetic
+sample_00292,Cooking tutorial: How to make delicious pasta,0,safe,synthetic
+sample_00293,Pathetic loser get a life,1,toxicity,synthetic
+sample_00294,Meditation and mindfulness guide,0,safe,synthetic
+sample_00295,Real people wouldn't associate with [PEOPLE],1,hate_speech,synthetic
+sample_00296,Historical documentary about ancient Rome,0,safe,synthetic
+sample_00297,Family vacation at beach with beautiful scenery,0,safe,synthetic
+sample_00298,Shut up you idiot nobody cares,1,toxicity,synthetic
+sample_00299,Cute kittens playing in the garden,0,safe,synthetic
