@@ -639,7 +639,7 @@ If you use VIVEK in your research, please cite:
 
 ## 🌟 **Star History**
 
-[![Star History Chart](<iframe style="width:100%;height:auto;min-width:600px;min-height:400px;" src="https://www.star-history.com/embed?secret=#ARJUN-RAJESH-24/Vigilant-Intelligent-Verifier-for-Ethical-Kids-content&type=date&legend=top-left" frameBorder="0"></iframe>)
+[![Star History Chart](https://api.star-history.com/svg?repos=ARJUN-RAJESH-24/Vigilant-Intelligent-Verifier-for-Ethical-Kids-content&type=Date)](https://star-history.com/#ARJUN-RAJESH-24/Vigilant-Intelligent-Verifier-for-Ethical-Kids-content&Date)
 
 ---
 
@@ -650,4 +650,3 @@ If you use VIVEK in your research, please cite:
 [⬆ Back to Top](#vivek-vigilant-intelligent-verifier-for-ethical-kids-content)
 
 </div>
-
