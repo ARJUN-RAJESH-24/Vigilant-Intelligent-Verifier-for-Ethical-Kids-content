@@ -1,11 +1,39 @@
-pandas
-numpy
-scikit-learn
-matplotlib
-tqdm
-joblib
-xgboost
-kagglehub
-librosa
-opencv-python
-seaborn
+# Core Deep Learning Libraries
+torch>=2.0.0
+torchvision>=0.15.0
+torchaudio>=2.0.0
+
+# Transformers and NLP
+transformers>=4.30.0
+tokenizers>=0.13.0
+sentencepiece>=0.1.99
+
+# Data Processing
+pandas>=2.0.0
+numpy>=1.24.0
+scikit-learn>=1.3.0
+
+# Audio Processing
+librosa>=0.10.0
+soundfile>=0.12.0
+
+# Video Processing
+opencv-python>=4.8.0
+imageio>=2.31.0
+imageio-ffmpeg>=0.4.9
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Utilities
+tqdm>=4.65.0
+joblib>=1.3.0
+pyyaml>=6.0
+tensorboard>=2.13.0
+
+# Optional but Recommended
+xgboost>=2.0.0
+kagglehub>=0.1.0
+textblob>=0.17.1
+pillow>=10.0.0

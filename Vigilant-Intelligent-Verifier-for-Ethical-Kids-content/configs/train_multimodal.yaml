@@ -1,0 +1,44 @@
+# Configuration for Multi-Modal Fusion Model Training
+
+model:
+  type: "MultiModalFusion"
+  fusion_type: "attention"  # early, late, or attention
+  text_dim: 768  # BERT hidden size
+  video_dim: 512  # ResNet18 feature size
+  audio_dim: 256  # Audio CNN feature size
+  num_classes: 2
+  dropout: 0.3
+
+data:
+  captions_path: "data/captions.csv"
+  video_dir: "data/videos"
+  labels_path: "data/labels.csv"
+  batch_size: 8
+  text_max_length: 128
+  num_frames: 16
+  frame_size: [224, 224]
+  audio_sample_rate: 22050
+  audio_duration: 30
+  audio_n_mels: 128
+  num_workers: 2
+  train_split: 0.8
+  val_split: 0.2
+  random_state: 42
+
+training:
+  num_epochs: 30
+  learning_rate: 0.0001
+  optimizer: "adamw"
+  weight_decay: 0.01
+  gradient_clip: 1.0
+  scheduler: "cosine"
+  scheduler_T_max: 30
+  save_interval: 5
+
+checkpoint:
+  checkpoint_dir: "checkpoints/multimodal"
+  save_best: true
+
+device: "cuda"
+seed: 42
+

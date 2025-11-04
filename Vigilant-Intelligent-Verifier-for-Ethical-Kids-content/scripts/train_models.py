@@ -28,91 +28,79 @@ MODELS_DIR = "models/trained_models"
 RESULTS_DIR = "models/results"
 SCALER_PATH = "models/scaler.pkl"
 FEATURE_IMPORTANCE_PATH = "models/feature_importance.csv"
-# --- NEW CONFIG PATH ---
-SCHEMA_DUMP_PATH = "models/final_feature_schema.txt"
-# -----------------------
+SCHEMA_DUMP_PATH = "models/final_feature_schema.txt" 
 TEST_SIZE = 0.2
 RANDOM_STATE = 42
 CV_FOLDS = 5
 
 def load_data():
-    """Loads and merges features from CSV files with proper error handling."""
-    print("📂 Loading data...")
+    """Loads and merges ONLY text features with labels, using index alignment."""
+    print("📂 Loading data (Text-Only Mode - Final Fix)...")
     
-    # Check if files exist
-    required_files = {
-        'text': TEXT_FEATURES_PATH,
-        'tfidf': TFIDF_FEATURES_PATH,
-        'audio': AUDIO_FEATURES_PATH,
-        'video': VIDEO_FEATURES_PATH,
-        'labels': LABELS_PATH
-    }
-    
-    for name, path in required_files.items():
-        if not os.path.exists(path):
-            print(f"⚠️ Warning: {name.capitalize()} file not found: {path} (Continuing with placeholder data)")
-            
-    # Load dataframes
-    text_df = pd.read_csv(TEXT_FEATURES_PATH)
-    labels_df = pd.read_csv(LABELS_PATH)
-    
-    # Load TFIDF features, fallback to empty DataFrame if missing
-    tfidf_df = pd.read_csv(TFIDF_FEATURES_PATH) if os.path.exists(TFIDF_FEATURES_PATH) else pd.DataFrame({'id': []})
-    
-    # Load Audio/Video features, fallback to empty DataFrame if missing
-    audio_df = pd.read_csv(AUDIO_FEATURES_PATH) if os.path.exists(AUDIO_FEATURES_PATH) else pd.DataFrame({'id': []})
-    video_df = pd.read_csv(VIDEO_FEATURES_PATH) if os.path.exists(VIDEO_FEATURES_PATH) else pd.DataFrame({'id': []})
+    try:
+        # Load dataframes
+        text_df = pd.read_csv(TEXT_FEATURES_PATH)
+        labels_df = pd.read_csv(LABELS_PATH)
+        tfidf_df = pd.read_csv(TFIDF_FEATURES_PATH) if os.path.exists(TFIDF_FEATURES_PATH) else pd.DataFrame({'id': []})
+        
+        # Load, but skip merging, Audio/Video data (for logging)
+        audio_df = pd.read_csv(AUDIO_FEATURES_PATH) if os.path.exists(AUDIO_FEATURES_PATH) else pd.DataFrame({'id': []})
+        video_df = pd.read_csv(VIDEO_FEATURES_PATH) if os.path.exists(VIDEO_FEATURES_PATH) else pd.DataFrame({'id': []})
+
+    except FileNotFoundError as e:
+        print(f"\n❌ CRITICAL ERROR: Required file not found. Ensure all necessary CSVs exist: {e}")
+        return pd.DataFrame() # Return empty DataFrame on critical error
 
     print(f"  ✓ Text features (structural): {text_df.shape}")
     print(f"  ✓ Text features (TFIDF): {tfidf_df.shape}")
-    print(f"  ✓ Audio features: {audio_df.shape}")
-    print(f"  ✓ Video features: {video_df.shape}")
     print(f"  ✓ Labels: {labels_df.shape}")
+    print(f"  ⚠️ Ignored Audio/Video features: Audio={audio_df.shape}, Video={video_df.shape}")
+
+    # --- CRITICAL FIX: Merge by Index/Order to bypass ID column mismatches ---
     
-    # Validate labels
-    if 'id' not in labels_df.columns or 'label' not in labels_df.columns:
-        raise ValueError("❌ Labels CSV must contain 'id' and 'label' columns")
+    # 1. Find minimum length to prevent indexing errors
+    min_len = min(len(text_df), len(labels_df), len(tfidf_df))
     
-    # Check label distribution
-    label_counts = labels_df['label'].value_counts()
-    print(f"\n📊 Label distribution:")
-    for label, count in label_counts.items():
-        print(f"  Class {label}: {count} samples ({count/len(labels_df)*100:.1f}%)")
+    # 2. Truncate and reset index to guarantee order alignment
+    text_df = text_df.head(min_len).reset_index(drop=True)
+    labels_df = labels_df.head(min_len).reset_index(drop=True)
+    tfidf_df = tfidf_df.head(min_len).reset_index(drop=True)
+
+    # 3. Concatenate horizontally by index (axis=1)
+    # We drop the 'id' columns first, as they contain the mismatched data,
+    # and then rely on the implicit alignment of the pandas index.
+    df = pd.concat([
+        text_df.drop(columns=['id']), 
+        tfidf_df.drop(columns=['id']), 
+        labels_df[['label', 'id']] # Keep the original labels and IDs for logging/target
+    ], axis=1)
+
+    # 4. Final cleanup and column selection
+    df = df.loc[:,~df.columns.duplicated()].copy()
     
-    # --- Data Merging Logic ---
-    # 1. Start with an INNER merge of structural text features and labels.
-    df = text_df.merge(labels_df, on="id", how="inner")
-    
-    # 2. LEFT merge TFIDF features
-    df = df.merge(tfidf_df, on="id", how="left")
-    
-    # 3. LEFT merge Audio features and Video features.
-    df = df.merge(audio_df, on="id", how="left", suffixes=('', '_audio')) 
-    df = df.merge(video_df, on="id", how="left", suffixes=('', '_video'))
-    # --- END Data Merging Logic ---
-    
+    # Ensure final DataFrame contains the required target and features
+    if 'label' not in df.columns:
+        df['label'] = labels_df['label']
+
     print(f"\n✅ Merged dataset: {df.shape}")
     print(f"   Features: {df.shape[1] - 2} (excluding 'id' and 'label')")
     
-    # Handle missing values 
-    numeric_cols = df.select_dtypes(include=[np.number]).columns
-    numeric_cols = [col for col in numeric_cols if col not in ['id', 'label']]
-    
-    missing_counts = df[numeric_cols].isnull().sum()
-    if missing_counts.sum() > 0:
-        print(f"\n⚠️  Found {missing_counts.sum()} missing values, imputing with 0 (likely from missing media features)...")
-        for col in numeric_cols:
-            if df[col].isnull().sum() > 0:
-                df[col].fillna(0, inplace=True)
-    
-    # Handle infinite values
+    if len(df) == 0:
+        return df
+
+    # Check label distribution
+    label_counts = df['label'].value_counts()
+    print(f"\n📊 Label distribution:")
+    for label, count in label_counts.items():
+        print(f"  Class {label}: {count} samples ({count/len(df)*100:.1f}%)")
+
+    # Handle missing/infinite values (important for clean text data)
     df.replace([np.inf, -np.inf], np.nan, inplace=True)
-    df.fillna(0, inplace=True) # Final safety check fillna(0)
+    df.fillna(0, inplace=True)
     
     return df
 
 def plot_confusion_matrix(y_true, y_pred, model_name):
-    """Plot and save confusion matrix."""
     cm = confusion_matrix(y_true, y_pred)
     plt.figure(figsize=(8, 6))
     sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', cbar=True)
@@ -125,7 +113,6 @@ def plot_confusion_matrix(y_true, y_pred, model_name):
     plt.close()
 
 def plot_roc_curve(y_true, y_pred_proba, model_name):
-    """Plot and save ROC curve."""
     fpr, tpr, _ = roc_curve(y_true, y_pred_proba)
     auc = roc_auc_score(y_true, y_pred_proba)
     
@@ -143,9 +130,6 @@ def plot_roc_curve(y_true, y_pred_proba, model_name):
     plt.close()
 
 def train_evaluate_save(X_train, X_test, y_train, y_test, feature_names):
-    """Trains, evaluates, and saves multiple models with hyperparameter tuning."""
-    
-    # Define models with hyperparameter grids
     models_config = {
         "LogisticRegression": {
             "model": LogisticRegression(random_state=RANDOM_STATE, max_iter=1000),
@@ -220,7 +204,6 @@ def train_evaluate_save(X_train, X_test, y_train, y_test, feature_names):
         print(f"🔧 Training {name}...")
         print(f"{'='*80}")
         
-        # Grid search for hyperparameter tuning
         grid_search = GridSearchCV(
             config['model'], 
             config['params'], 
@@ -235,17 +218,14 @@ def train_evaluate_save(X_train, X_test, y_train, y_test, feature_names):
         
         print(f"✓ Best parameters: {grid_search.best_params_}")
         
-        # Predictions
         y_pred = best_model.predict(X_test)
         y_pred_proba = best_model.predict_proba(X_test)[:, 1] if hasattr(best_model, 'predict_proba') else None
         
-        # Metrics
         accuracy = accuracy_score(y_test, y_pred)
         precision = precision_score(y_test, y_pred, average='binary', zero_division=0)
         recall = recall_score(y_test, y_pred, average='binary', zero_division=0)
         f1 = f1_score(y_test, y_pred, average='binary', zero_division=0)
         
-        # Cross-validation scores
         cv_scores = cross_val_score(best_model, X_train, y_train, cv=CV_FOLDS, scoring='f1')
         
         print(f"\n📊 {name} Results:")
@@ -259,27 +239,21 @@ def train_evaluate_save(X_train, X_test, y_train, y_test, feature_names):
             auc = roc_auc_score(y_test, y_pred_proba)
             print(f"  ROC-AUC:   {auc:.4f}")
         
-        # Detailed classification report
         print(f"\n{classification_report(y_test, y_pred)}")
         
-        # Save model
         model_path = os.path.join(MODELS_DIR, f"{name}.pkl")
         joblib.dump(best_model, model_path)
         print(f"✅ Model saved to {model_path}")
         
-        # Save classification report
         report_dict = classification_report(y_test, y_pred, output_dict=True)
         report_df = pd.DataFrame(report_dict).transpose()
         report_df.to_csv(os.path.join(RESULTS_DIR, f"{name}_report.csv"))
         
-        # Plot confusion matrix
         plot_confusion_matrix(y_test, y_pred, name)
         
-        # Plot ROC curve
         if y_pred_proba is not None:
             plot_roc_curve(y_test, y_pred_proba, name)
         
-        # Store results
         results_summary.append({
             'Model': name,
             'Accuracy': accuracy,
@@ -325,7 +299,6 @@ def train_evaluate_save(X_train, X_test, y_train, y_test, feature_names):
     print(f"  F1-Score:  {f1_ensemble:.4f}")
     print(f"  ROC-AUC:   {auc_ensemble:.4f}")
     
-    # Save ensemble
     joblib.dump(ensemble, os.path.join(MODELS_DIR, "Ensemble.pkl"))
     plot_confusion_matrix(y_test, y_pred_ensemble, "Ensemble")
     plot_roc_curve(y_test, y_pred_proba_ensemble, "Ensemble")
@@ -342,7 +315,6 @@ def train_evaluate_save(X_train, X_test, y_train, y_test, feature_names):
         'Best_Params': 'Voting(RF+GB+SVM)'
     })
     
-    # Save results summary
     results_df = pd.DataFrame(results_summary)
     results_df = results_df.sort_values('F1-Score', ascending=False)
     results_df.to_csv(os.path.join(RESULTS_DIR, "model_comparison.csv"), index=False)
@@ -351,11 +323,6 @@ def train_evaluate_save(X_train, X_test, y_train, y_test, feature_names):
     print("📈 Model Comparison:")
     print(f"{'='*80}")
     print(results_df.to_string(index=False))
-    
-    # Feature importance (for tree-based models)
-    print(f"\n{'='*80}")
-    print("🔍 Extracting Feature Importance...")
-    print(f"{'='*80}")
     
     rf_model = best_models['RandomForest']
     feature_importance = pd.DataFrame({
@@ -368,7 +335,6 @@ def train_evaluate_save(X_train, X_test, y_train, y_test, feature_names):
     print("\nTop 15 Most Important Features:")
     print(feature_importance.head(15).to_string(index=False))
     
-    # Plot feature importance
     plt.figure(figsize=(10, 8))
     top_features = feature_importance.head(20)
     plt.barh(range(len(top_features)), top_features['importance'])
@@ -385,35 +351,38 @@ def train_evaluate_save(X_train, X_test, y_train, y_test, feature_names):
     print(f"{'='*80}")
 
 def main():
-    """Main function to run the training pipeline."""
     print("\n" + "="*80)
     print("🤖 ADULT CONTENT CLASSIFIER - MODEL TRAINING PIPELINE")
     print("="*80 + "\n")
     
     try:
-        # Load data
         df = load_data()
         
-        # Prepare features and labels
+        # Check if load_data returned an empty DataFrame due to merge failure
+        if len(df) == 0:
+            print("❌ Error: Cannot proceed with 0 samples. Data merge failed.")
+            return
+
         X = df.drop(columns=["id", "label"])
         y = df["label"]
         
         feature_names = X.columns.tolist()
         
-        # --- CRITICAL FIX: Save the definitive schema for production use ---
+        # --- CRITICAL FIX: Save the definitive feature schema ---
         os.makedirs("models", exist_ok=True)
         with open(SCHEMA_DUMP_PATH, 'w') as f:
             for name in feature_names:
                 f.write(f"{name}\n")
         print(f"✅ Definitive feature schema saved to {SCHEMA_DUMP_PATH}")
-        # ------------------------------------------------------------------
+        # --------------------------------------------------------
         
         print(f"\n📊 Dataset Summary:")
         print(f"  Total samples: {len(df)}")
         print(f"  Total features: {len(feature_names)}")
         print(f"  Class balance: {y.value_counts().to_dict()}")
         
-        # Train-test split
+        TEST_SIZE = 0.2
+        RANDOM_STATE = 42
         X_train, X_test, y_train, y_test = train_test_split(
             X, y, 
             test_size=TEST_SIZE, 
@@ -425,18 +394,15 @@ def main():
         print(f"  Training set: {len(X_train)} samples")
         print(f"  Test set: {len(X_test)} samples")
         
-        # Standardize features
         print(f"\n⚙️  Standardizing features...")
         scaler = StandardScaler()
         X_train_scaled = scaler.fit_transform(X_train)
         X_test_scaled = scaler.transform(X_test)
         
-        # Save the scaler
         os.makedirs("models", exist_ok=True)
         joblib.dump(scaler, SCALER_PATH)
         print(f"✅ Scaler saved to {SCALER_PATH}")
         
-        # Train and evaluate models
         train_evaluate_save(X_train_scaled, X_test_scaled, y_train, y_test, feature_names)
         
         print(f"\n{'='*80}")
@@ -445,11 +411,7 @@ def main():
         
     except FileNotFoundError as e:
         print(f"\n{e}")
-        print("💡 Please ensure you have generated the feature files first.")
-        print("   You can run the feature extraction scripts in the 'scripts/' directory, for example:")
-        print("   - python scripts/extract_text_features.py")
-        print("   - python scripts/extract_audio_features.py")
-        print("   - python scripts/extract_video_features.py")
+        print("💡 Please ensure all required feature files exist in the 'features/' directory.")
     except Exception as e:
         print(f"\n❌ Error in training pipeline: {e}")
 

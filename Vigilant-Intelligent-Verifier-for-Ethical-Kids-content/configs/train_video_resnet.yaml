@@ -1,0 +1,36 @@
+# Configuration for Video ResNet Model Training
+
+model:
+  type: "VideoResNet"
+  model_name: "resnet18"
+  num_classes: 2
+  dropout: 0.3
+
+data:
+  video_dir: "data/videos"
+  labels_path: "data/labels.csv"
+  batch_size: 8
+  num_frames: 16
+  frame_size: [224, 224]
+  num_workers: 2
+  train_split: 0.8
+  val_split: 0.2
+  random_state: 42
+
+training:
+  num_epochs: 30
+  learning_rate: 0.0001
+  optimizer: "adam"
+  weight_decay: 1e-5
+  gradient_clip: 1.0
+  scheduler: "cosine"
+  scheduler_T_max: 30
+  save_interval: 5
+
+checkpoint:
+  checkpoint_dir: "checkpoints/video_resnet"
+  save_best: true
+
+device: "cuda"
+seed: 42
+

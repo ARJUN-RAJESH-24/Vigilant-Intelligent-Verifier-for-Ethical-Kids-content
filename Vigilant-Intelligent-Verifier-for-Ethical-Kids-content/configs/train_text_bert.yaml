@@ -1,0 +1,35 @@
+# Configuration for Text BERT Model Training
+
+model:
+  type: "TextBERT"
+  model_name: "bert-base-uncased"
+  num_classes: 2
+  dropout: 0.3
+
+data:
+  captions_path: "data/captions.csv"
+  labels_path: "data/labels.csv"
+  batch_size: 16
+  max_length: 128
+  num_workers: 4
+  train_split: 0.8
+  val_split: 0.2
+  random_state: 42
+
+training:
+  num_epochs: 10
+  learning_rate: 2e-5
+  optimizer: "adamw"
+  weight_decay: 0.01
+  gradient_clip: 1.0
+  scheduler: "linear"
+  warmup_steps: 1000
+  save_interval: 5
+
+checkpoint:
+  checkpoint_dir: "checkpoints/text_bert"
+  save_best: true
+
+device: "cuda"
+seed: 42
+
